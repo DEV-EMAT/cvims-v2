@@ -163,7 +163,7 @@ class AuthController extends Controller
                     } catch (\PDOException $e) {
                         DB::connection('mysql')->rollBack();
                         // return response()->json($e, $this->queryErrorStatus);
-                        return response()->json(['status' => $this->serverErrorStatus, 'message' => 'Something went wrong on the server.'], $this->serverErrorStatus);
+                        return response()->json(['status' => $this->serverErrorStatus, 'message' => 'Something went wrong on the server.', $e ], $this->serverErrorStatus);
                     }
                 } else {
                     return response()->json(['status' => $this->errorStatus, 'message'=> 'Your account is deactivated. Please contact our support.'], $this->errorStatus);
