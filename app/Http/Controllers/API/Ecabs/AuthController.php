@@ -158,7 +158,7 @@ class AuthController extends Controller
                                 return response()->json(['status' => $this->errorStatus, 'message' => 'Invalid Request. Please enter a username or a password.'], $this->errorStatus);
 
                             }
-                            return response()->json(['status' => $this->serverErrorStatus, 'message' => 'Something went wrong on the server.'], $this->serverErrorStatus);
+                            return response()->json(['status' => $this->serverErrorStatus, 'message' => 'Something went wrong on the server.' , $e], $this->serverErrorStatus);
                         }
                     } catch (\PDOException $e) {
                         DB::connection('mysql')->rollBack();
