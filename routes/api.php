@@ -246,7 +246,7 @@ Route::group([
 
             Route::prefix('cabvax')->group(function () {
                 //Get all my company
-
+                Route::get('sample', function(){ return "LOL";});
                 Route::post('add-prereg', 'PatientEncodingController@storePreRegistered');
                 Route::put('update-prereg', 'PatientEncodingController@updatePreRegistered');
                 // Patient Verification Routes
