@@ -9,7 +9,7 @@ use App\Covid19Vaccine\VaccineCategory;
 use App\Covid19Vaccine\Vaccinator;
 use App\Covid19Vaccine\VaccinationMonitoring;
 use App\Covid19Vaccine\VaccinationMonitoringSurvey;
-use App\Http\Resources\QualifiedpatientResource;
+use App\Http\Resources\QualifiedPatientResource;
 use App\Http\Resources\PreRegResource;
 use App\Covid19Vaccine\Survey;
 use App\Covid19Vaccine\Barangay;
