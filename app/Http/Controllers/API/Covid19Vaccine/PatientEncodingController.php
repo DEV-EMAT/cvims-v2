@@ -348,7 +348,7 @@ class PatientEncodingController extends Controller
                     $qualifiedPatient->qrcode = 'V' . chr(rand(65,90)) . chr(rand(65,90)) . chr(rand(65,90)) . str_pad($day . substr($year, -2) . $month . $request->pre_registration_id, 16, '0', STR_PAD_LEFT);
                     $qualifiedPatient->qualification_status = "APPROVED";
                     $qualifiedPatient->verified_by = Auth::user()->person->last_name . ", ". Auth::user()->person->first_name . " " . Auth::user()->person->middle_name;
-                    $qualifiedPatient->assessment_status = 1;
+                    $qualifiedPatient->assessment_status = '1';
                     $qualifiedPatient->status = 1;
                     $changes = $qualifiedPatient->getDirty();
                     $qualifiedPatient->save();
@@ -421,7 +421,11 @@ class PatientEncodingController extends Controller
                     //     $query->where('status', '=', '1');
                     // })
                     ->where('qualified_patients.qualification_status', '=', 'APPROVED')
-                    ->where('qualified_patients.assessment_status', '=', '1')
+                   // ->where('qualified_patients.assessment_status', '=', '1')
+	    	    ->where(function ($query) {
+		    $query->where('qualified_patients.assessment_status', '=', "1")
+ 		   	  ->orWhereNull('qualified_patients.assessment_status');
+		    })
                     ->where('qualified_patients.status', '=', '1')
                     ->paginate($request->items_per_page);
                 }else{
@@ -461,7 +465,11 @@ class PatientEncodingController extends Controller
                     //     $query->where('status', '=', '1');
                     // })
                     ->where('qualified_patients.qualification_status', '=', 'APPROVED')
-                    ->where('qualified_patients.assessment_status', '=', '1')
+                   // ->where('qualified_patients.assessment_status', '=', '1')
+ 		    ->where(function ($query) {
+			  $query->where('qualified_patients.assessment_status', '=', "1")
+				->orWhereNull('qualified_patients.assessment_status');
+			})
                     ->where('qualified_patients.status', '=', '1')
                     ->paginate($request->items_per_page);
                 }
@@ -543,25 +551,25 @@ class PatientEncodingController extends Controller
                     $vaccinationMonitoring->save();
                     $monitoringSurvey = new VaccinationMonitoringSurvey;
                     $monitoringSurvey->vaccination_monitoring_id = $vaccinationMonitoring->id;
-                    $monitoringSurvey->question_1 = $request['question1'];
-                    $monitoringSurvey->question_2 = $request['question2'];
-                    $monitoringSurvey->question_3 = $request['question3'];
-                    $monitoringSurvey->question_4 = $request['question4'];
-                    $monitoringSurvey->question_5 = $request['question5'];
-                    $monitoringSurvey->question_6 = $request['question6'];
-                    $monitoringSurvey->question_7 = $request['question7'];
-                    $monitoringSurvey->question_8 = $request['question8'];
+                    $monitoringSurvey->question_1 = $request['question_1'];
+                    $monitoringSurvey->question_2 = $request['question_2'];
+                    $monitoringSurvey->question_3 = $request['question_3'];
+                    $monitoringSurvey->question_4 = $request['question_4'];
+                    $monitoringSurvey->question_5 = $request['question_5'];
+                    $monitoringSurvey->question_6 = $request['question_6'];
+                    $monitoringSurvey->question_7 = $request['question_7'];
+                    $monitoringSurvey->question_8 = $request['question_8'];
                     $monitoringSurvey->question_9 = $request['question8Arr'];
-                    $monitoringSurvey->question_10 = $request['question10'];
-                    $monitoringSurvey->question_11 = $request['question11'];
-                    $monitoringSurvey->question_12 = $request['question12'];
-                    $monitoringSurvey->question_13 = $request['question13'];
-                    $monitoringSurvey->question_14 = $request['question14'];
-                    $monitoringSurvey->question_15 = $request['question15'];
-                    $monitoringSurvey->question_16 = $request['question16'];
+                    $monitoringSurvey->question_10 = $request['question_10'];
+                    $monitoringSurvey->question_11 = $request['question_11'];
+                    $monitoringSurvey->question_12 = $request['question_12'];
+                    $monitoringSurvey->question_13 = $request['question_13'];
+                    $monitoringSurvey->question_14 = $request['question_14'];
+                    $monitoringSurvey->question_15 = $request['question_15'];
+                    $monitoringSurvey->question_16 = $request['question_16'];
                     $monitoringSurvey->question_17 = $request['question17Arr'];
-                    $monitoringSurvey->question_18 = $request['question18'];
-                    $monitoringSurvey->question_19 = $request['question19'];
+                    $monitoringSurvey->question_18 = $request['question_18'];
+                    $monitoringSurvey->question_19 = $request['question_19'];
                     $monitoringSurvey->status = 1;
                     $monitoringSurvey->save();
 

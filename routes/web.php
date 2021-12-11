@@ -11,7 +11,6 @@ use Spatie\Geocoder\Facades\Geocoder;
 |
 */
 
-
 /*
 |--------------------------------------------------------------------------
 | Global Routes

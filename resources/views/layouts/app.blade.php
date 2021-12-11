@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <meta http-equiv="Content-Type" content="text/html; charset=euc-jp">
     <title>Enterprise Cabuyao</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
