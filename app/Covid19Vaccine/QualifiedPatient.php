@@ -32,7 +32,8 @@ class QualifiedPatient extends Model
        ->join('vaccine_categories', 'vaccine_categories.id', '=', 'vaccine_category_id')
        ->join('vaccinators', 'vaccinators.id', '=', 'vaccinator_id')
        ->join('health_facilities', 'health_facilities.id', '=', 'vaccinators.health_facilities_id')
-       ->join('vaccination_monitoring_surveys', 'vaccination_monitoring_surveys.vaccination_monitoring_id', '=', 'vaccination_monitorings.id');
+       ->join('vaccination_monitoring_surveys', 'vaccination_monitoring_surveys.vaccination_monitoring_id', '=', 'vaccination_monitorings.id')
+	->where('vaccination_monitorings.status','=','1');
     }
 
     public function scopeSearchData($query, $search_key){

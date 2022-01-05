@@ -36,4 +36,11 @@ class PreRegistration extends Model
     {
        return $this->hasOne('App\Covid19Vaccine\Survey', 'registration_id', 'id');
     }
+public function guardians()
+
+    {
+
+       return $this->hasOne('App\Covid19Vaccine\Guardian', 'pre_registration_id', 'id');
+
+    }
 }
